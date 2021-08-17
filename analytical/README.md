@@ -7,7 +7,7 @@ FILES:
 * `JUMPTIMES`: Simulation Jump transition times 
 * `cal_KTR.py`: KTR method using the analtyical log of VMB. Extracts gamma, rate k, and p-value.
 
-## DEPENDENCIES
+### DEPENDENCIES
 
 Please have installed in the python enviorment: scipy and numpy.
 
