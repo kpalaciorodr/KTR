@@ -2,10 +2,10 @@
 ### ANALYTICAL FIT OF THE SURVIVAL FUNCTION
 
 FILES:
--- `AVE_VMB`: Maximum bias averaged over multiple simulations
--- `fit_VMB.py`: Python script to extract a and b paramters from fit of `VMB=a*log(1+b*t)`
--- `JUMPTIMES`: Simulation Jump transition times 
--- `cal_KTR.py`: KTR method using the analtyical log of VMB. Extracts gamma, rate k, and p-value.
+* `AVE_VMB`: Maximum bias averaged over multiple simulations
+* `fit_VMB.py`: Python script to extract a and b paramters from fit of `VMB=a*log(1+b*t)`
+* `JUMPTIMES`: Simulation Jump transition times 
+* `cal_KTR.py`: KTR method using the analtyical log of VMB. Extracts gamma, rate k, and p-value.
 
 ### FIRST CALCULATE THE FIT OF THE LOGARITHMIC FUNCTION TO THE AVERAGE VMB
 
