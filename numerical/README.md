@@ -2,12 +2,14 @@
 ### NUMERICAL FIT OF THE SURVIVAL FUNCTION
 
 FILES:
-* `VMB`: Maximum bias `VMB(t)` for multiple simulations (concatenated)
-* `TIME`: Simulation time `t` for multiple simulations (concatenated)
+* `VMB`: Maximum bias `VMB(t)` for multiple simulations. Numpy format (concatenated)
+* `TIME`: Simulation time `t` for multiple simulations. Numpy format (concatenated)
 * `JUMPTIMES`: Final simulation time (for non-events) or time to jump (for events)
-              for multiple simulation
+              for multiple simulation. (Numpy format)
 * `LM_KTR.py`: Python script to fit numericaly the survival function and optimize
               the likelihood function
+              
+### DEPENDENCIES
 
 ### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD
 
