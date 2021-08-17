@@ -7,5 +7,5 @@ time-dependent biased simulations by fitting analytically or numerically the sur
 Example data for the 2D system using y-coordinate `(k_o=5.6e-8)`
 
 ## Analytical fit: 
-Example data for the CDK2-ligand unbinding `(k_{exp} = 0.26 \pm 0.05s^{-1})`
+Example data for the CDK2-ligand unbinding `(k_{exp} = 0.26 +/- 0.05s^{-1})`
 
