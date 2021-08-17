@@ -11,6 +11,8 @@ FILES:
               
 ### DEPENDENCIES
 
+Please have installed in the python enviorment: `scipy`, `numpy` and `pandas`.
+
 ### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD
 
 ```bash
