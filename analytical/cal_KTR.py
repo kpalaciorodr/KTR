@@ -39,7 +39,7 @@ gamma0=0.6 ## initial gamma that enables extracting a converged fit
 p0[0]=gamma0*a+1.0
 p0[1]=0.0000000001
 
-## Calculating empircal CDF
+## Calculating empirical CDF
 logbins = np.linspace(mintime,maxtime,n)
 
 counts, bin_edges = np.histogram(t, bins=logbins)

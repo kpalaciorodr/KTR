@@ -1,7 +1,6 @@
 import numpy as np
 import glob
 from scipy import interpolate, optimize, integrate
-import pandas as pd
 import warnings
 warnings.filterwarnings('ignore')
 
