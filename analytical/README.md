@@ -2,7 +2,8 @@
 ### ANALYTICAL FIT OF THE SURVIVAL FUNCTION
 
 FILES:
-* `AVE_VMB`: Maximum bias averaged over multiple simulations. Text format: (first column) time [ps], (second column) averaged maximum bias.
+* `VMB`:  Simulation time `t` and Maximum bias `VMB(t)` for multiple simulations (concatenated). 
+          Text format: (first column) time [ps], (second column) maximum bias [kT].
 * `fit_VMB.py`: Python script to extract a and b paramters from fit of `VMB=a*log(1+b*t)`
 * `JUMPTIMES`: Simulation-jump transition times. Text format: (first column) simulation-jump time [ps].
 * `cal_KTR.py`: KTR method using the analtyical log of VMB. Extracts gamma, rate k, and p-value.
@@ -27,9 +28,9 @@ python3 cal_KTR.py <n> <a> <b>
 
 ```bash
 > python3 fit_VMB.py
-a 6.752938658295208 b 0.025656565586767554
-> python3 cal_KTR.py 50 6.752938658295208 0.025656565586767554
-gamma 0.4869417571263078 k 1.678147638540419e-11 pval 0.5118174752056448
+a 6.625614290702432 b 0.02724910306967592
+> python3 cal_KTR.py 50 6.625614290702432 0.02724910306967592
+gamma 0.48895491848631023 k 1.746803196680984e-11 pval 0.5006084116663858
 ```
 
 With k in ps^-1
