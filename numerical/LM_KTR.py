@@ -41,10 +41,10 @@ def calculate_log_hazard(gamma, t_final, spline):
 
 ## LOAD DATA
 
-t_final=np.load('JUMPTIMES') # JUMPTIME OR FINAL SIMULATION TIME 
+t_final=np.loadtxt('JUMPTIMES') # JUMPTIME OR FINAL SIMULATION TIME 
 t_total=10000000.0           # TOTAL SIMULATION TIME
-T=np.load('TIME')            # TIME FOR ALL TRAJECTORIES (CONCATENATED)
-V=np.load('VMB')             # VMB FOR ALL TRAJECTORIES (CONCATENATED)
+T=np.loadtxt('VMB')[:,0]            # TIME FOR ALL TRAJECTORIES (CONCATENATED)
+V=np.loadtxt('VMB')[:,1]             # VMB FOR ALL TRAJECTORIES (CONCATENATED)
 
 unique_T = np.unique(T)
 unique_V = np.empty_like(unique_T)
