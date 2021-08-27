@@ -16,7 +16,7 @@ Please have installed in the python environment: `scipy` and `numpy`.
 ### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD
 
 ```bash
-python3 LM_KTR.py
+python3 LM_KRT.py
 ```
 
 #### Example output:
