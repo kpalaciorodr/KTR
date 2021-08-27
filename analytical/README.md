@@ -10,7 +10,7 @@ FILES:
 
 ### DEPENDENCIES
 
-Please have installed in the python environment: `scipy` and `numpy`.
+Please have installed in the python environment: `scipy`, `pandas`, and `numpy`.
 
 ### FIRST CALCULATE THE FIT OF THE LOGARITHMIC FUNCTION TO THE AVERAGE VMB
 

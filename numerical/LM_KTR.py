@@ -1,4 +1,9 @@
+#####NUMERICAL FIT OF VMB
+## RUN:
+## python3 LM_KTR.py
+
 import numpy as np
+import pandas as pd
 import glob
 from scipy import interpolate, optimize, integrate
 import warnings
@@ -47,9 +52,8 @@ T=np.loadtxt('VMB')[:,0]            # TIME FOR ALL TRAJECTORIES (CONCATENATED)
 V=np.loadtxt('VMB')[:,1]             # VMB FOR ALL TRAJECTORIES (CONCATENATED)
 
 unique_T = np.unique(T)
-unique_V = np.empty_like(unique_T)
-for n_t, t in enumerate(unique_T):
-    unique_V[n_t] = V[np.where(T == t)].mean()
+df = pd.DataFrame({"T": T, "V":V})
+unique_V = df.groupby('T').mean()["V"].values
 
 ## SPLINE FIT VMB(t)
 spline = interpolate.UnivariateSpline(unique_T, unique_V, s=0)  # Update smoothing factor?

@@ -2,19 +2,18 @@
 ## RUN:
 ## python3 fit_VMB.py 
 
-
 import scipy
 from scipy.optimize import curve_fit
 import numpy as np
+import pandas as pd
 
 #Loading Average VMB
 T=np.loadtxt('VMB')[:,0]             # TIME FOR ALL TRAJECTORIES (CONCATENATED)
 V=np.loadtxt('VMB')[:,1]             # VMB FOR ALL TRAJECTORIES (CONCATENATED)
 
 unique_T = np.unique(T)
-unique_V = np.empty_like(unique_T)
-for n_t, t in enumerate(unique_T):
-    unique_V[n_t] = V[np.where(T == t)].mean()
+df = pd.DataFrame({"T": T, "V":V})
+unique_V = df.groupby('T').mean()["V"].values
 
 # Initializing guess
 p0 = np.zeros(2)
