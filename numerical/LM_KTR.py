@@ -10,59 +10,27 @@ warnings.filterwarnings('ignore')
 
 # Definition of functions
 
+# Value of the loglikelihood as a function of gamma
+# find mean_t directly from solving the dL/dmean_t=0 equation
 def calculate_log_l(gamma, event, t_final, spline):
 
-    # Run cum_hazard in parallel, change the 4 for something else if you want more cores
+    # Run cumulative_hazard in parallel, change the 4 for something else if you want more cores
     p =  mp.Pool(4)
-    func = partial(calculate_cum_hazard, gamma, spline)
-    cum_hazard = np.array(p.map(func, t_final))
+    func = partial(calculate_cumulative_hazard, gamma, spline)
+    cumulative_hazard = np.array(p.map(func, t_final))
     p.close()
     
     log_hazard = calculate_log_hazard(gamma, t_final, spline)
     
-    mean_t = cum_hazard.sum() / event.sum()
-    log_l = -event.sum() * np.log(mean_t) + log_hazard[event].sum() - (1 / mean_t) * cum_hazard.sum()
+    mean_t = cumulative_hazard.sum() / event.sum()
+    log_l = -event.sum() * np.log(mean_t) + log_hazard[event].sum() - (1 / mean_t) * cumulative_hazard.sum()
 
     return -log_l
 
-def calculate_cum_hazard(gamma, spline, t):
+def calculate_cumulative_hazard(gamma, spline, t):
 
     int_Veff = integrate.quad(lambda x: np.exp(gamma * spline(x)), 0, t)[0]
     return int_Veff
-
-def group(key, value):
-    """
-    group the values by key
-    returns the unique keys, and the average of the values per-key
-    By: Eelco Hoogendoorn
-    https://stackoverflow.com/questions/7790611/average-duplicate-values-from-two-paired-lists-in-python-using-numpy
-    """
-
-    # Upcast to numpy arrays
-    key = np.asarray(key)
-    value = np.asarray(value)
-
-    # First, sort by key
-    I = np.argsort(key)
-    key = key[I]
-    value = value[I] # Sort values according to how the keys were sorted
-
-    # The slicing points of the bins to sum over, i.e, where the sorted keys stop being unique
-    slices = np.concatenate(([0], np.where(key[:-1] != key[1:])[0]+1))
-
-    # First entry of each bin is a unique key
-    unique_keys = key[slices]
-
-    # Sum over the slices specified by index
-    per_key_sum = np.add.reduceat(value, slices)
-
-    # Number of counts per key is the difference of our slice points. cap off with number of keys for last bin
-    key_count = np.diff(np.append(slices, len(key)))
-
-    # Calculate the mean for the values
-    mean_values = per_key_sum/key_count
-    
-    return unique_keys, mean_values
 
 def calculate_log_hazard(gamma, t_final, spline):
 
@@ -78,7 +46,10 @@ t_total=10000000.0           # TOTAL SIMULATION TIME
 T=np.load('TIME')            # TIME FOR ALL TRAJECTORIES (CONCATENATED)
 V=np.load('VMB')             # VMB FOR ALL TRAJECTORIES (CONCATENATED)
 
-unique_T, unique_V = group(T, V)
+unique_T = np.unique(T)
+unique_V = np.empty_like(unique_T)
+for n_t, t in enumerate(unique_T):
+    unique_V[n_t] = V[np.where(T == t)].mean()
 
 ## SPLINE FIT VMB(t)
 spline = interpolate.UnivariateSpline(unique_T, unique_V, s=0)  # Update smoothing factor?
@@ -89,12 +60,12 @@ opt = optimize.minimize_scalar(calculate_log_l, bounds=(0.0, 1), method='bounded
 gamma = opt.x
 
 p =  mp.Pool(4)
-func = partial(calculate_cum_hazard, gamma, spline)
-cum_hazard = np.array(p.map(func, t_final))
+func = partial(calculate_cumulative_hazard, gamma, spline)
+cumulative_hazard = np.array(p.map(func, t_final))
 p.close()
 
-mean_t = cum_hazard.sum() / event.sum()
+mean_t = cumulative_hazard.sum() / event.sum()
 result = np.array([1/mean_t, gamma])
 
 ## EXTRACTED GAMMA AND K
-print("gamma", result[1],"k", result[0])
+print("gamma", result[1], "k", result[0])
