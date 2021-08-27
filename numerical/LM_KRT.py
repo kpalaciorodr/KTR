@@ -7,6 +7,8 @@ warnings.filterwarnings('ignore')
 
 # Definition of functions
 
+# Value of the loglikelihood as a function of gamma
+# find mean_t directly from solving dL/dmean_t=0
 def calculate_log_l(gamma):
     global event, t_final, spline
     cum_hazard = calculate_cum_hazard(gamma)
