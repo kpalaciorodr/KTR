@@ -6,8 +6,8 @@ FILES:
          Text format: (first column) time [steps], (second column) maximum bias [kT].
 * `JUMPTIMES`: Final simulation time (for non-events) or time to jump (for events)
                for multiple simulations. 
-* `LM_KTR.py`: Python script to fit numericaly the survival function and optimize
-               the likelihood function
+* `LM_KTR.py`: Python script to numerically fit the averaged maximum bias, survival probability and optimize
+               the likelihood function.
               
 ### DEPENDENCIES
 
