@@ -4,9 +4,9 @@
 FILES:
 * `VMB`:  Simulation time `t` and Maximum bias `VMB(t)` for multiple simulations (concatenated). 
           Text format: (first column) time [ps], (second column) maximum bias [kT].
-* `fit_VMB.py`: Python script to extract a and b paramters from fit of `VMB=a*log(1+b*t)`
+* `fit_VMB.py`: Python script to average VMB(t) and extract a and b paramters from fit of the average to `a*log(1+b*t)`
 * `JUMPTIMES`: Simulation-jump transition times. Text format: (first column) simulation-jump time [ps].
-* `cal_KTR.py`: KTR method using the analtyical log of VMB. Extracts gamma, rate k, and p-value.
+* `cal_KTR.py`: KTR method using the analtyical log of the average VMB. Extracts gamma, rate k, and p-value.
 
 ### DEPENDENCIES
 
@@ -33,4 +33,4 @@ a 6.625614290702432 b 0.02724910306967592
 gamma 0.48895491848631023 k 1.746803196680984e-11 pval 0.5006084116663858
 ```
 
-With k in ps^-1
+With k in ps^-1. Note that because the KS-test uses random numbers the p-value can change. 
