@@ -13,7 +13,7 @@ FILES:
 
 Please have installed in the python environment: `scipy`, `pandas`, and `numpy`.
 
-### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD
+### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD. USE THE TOTAL SIMULATION TIME t_total AS INPUT 
 
 ```bash
 python3 LM_KTR.py <t_total>
