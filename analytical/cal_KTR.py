@@ -68,8 +68,6 @@ indices = indices[indices < len(cdfbin)]
 # Calculate theoretical times
 theoretical_times = binscdf[indices]
 
-# Note: I checked using np.random.seed(2) and everything works fine.
-
 ## CALCULATING KS TEST
 s,p_val = scipy.stats.ks_2samp(t,theoretical_times)
 
