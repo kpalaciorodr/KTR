@@ -33,4 +33,4 @@ a 6.625614286994677 b 0.02724910314428881
 gamma 0.4889549184365808 k 1.7468031992136766e-11 pval 0.48480176219868876
 ```
 
-With k_o in ps^-1. Note that because the KS-test uses random numbers the p-value can change. 
+With k in ps^-1. Note that because the KS-test uses random numbers the p-value can change. 
