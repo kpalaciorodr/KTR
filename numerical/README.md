@@ -13,7 +13,9 @@ FILES:
 
 Please have installed in the python environment: `scipy`, `pandas`, and `numpy`.
 
-### CALCULATE THE FIT OF THE SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD. USE THE TOTAL SIMULATION TIME t_total AS INPUT 
+### CALCULATE THE FIT OF THE MAXIMUM BIAS, SURVIVAL FUNCTION AND OPTIMIZE THE LIKELIHOOD. 
+
+The total simulation time t_total is an input argument: 
 
 ```bash
 python3 LM_KTR.py <t_total>
