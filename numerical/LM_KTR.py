@@ -87,7 +87,7 @@ def main():
     unique_V = df.groupby("T").mean()["V"].values
 
     # SPLINE FIT VMB(t)
-    spline = interpolate.UnivariateSpline(unique_T, unique_V, s=0)
+    spline = interpolate.UnivariateSpline(unique_T, unique_V, s=0,ext=1)
     event = t < t_total
 
     # LIKELIHOOD OPTIMIZATION
