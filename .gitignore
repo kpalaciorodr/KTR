@@ -1,3 +1,4 @@
 .idea
 .ipynb_checkpoints
-
+/Tutorial/*.txt
+LM_KTR/__pycache__/*
